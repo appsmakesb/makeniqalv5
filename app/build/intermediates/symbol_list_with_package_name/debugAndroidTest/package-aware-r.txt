@@ -1,0 +1,3 @@
+com.v5foradnroid.userapp.test
+style WhiteBackgroundDialogTheme
+style WhiteBackgroundTheme

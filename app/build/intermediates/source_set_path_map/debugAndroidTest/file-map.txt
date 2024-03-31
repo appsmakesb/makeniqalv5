@@ -1,0 +1,7 @@
+com.v5foradnroid.userapp.test.app-jetified-annotation-experimental-1.3.0-0 C:\Users\Mohammed Foysal\.gradle\caches\transforms-3\781a055a59660fad18c8de384b014761\transformed\jetified-annotation-experimental-1.3.0\res
+com.v5foradnroid.userapp.test.app-jetified-core-1.5.0-1 C:\Users\Mohammed Foysal\.gradle\caches\transforms-3\8c5c5d49d103fd9bd3076e6d1d7adc1e\transformed\jetified-core-1.5.0\res
+com.v5foradnroid.userapp.test.app-androidTest-2 C:\Users\Mohammed Foysal\Downloads\makeniqalv5-master\app\build\generated\res\resValues\androidTest\debug
+com.v5foradnroid.userapp.test.app-androidTest-3 C:\Users\Mohammed Foysal\Downloads\makeniqalv5-master\app\build\generated\res\rs\androidTest\debug
+com.v5foradnroid.userapp.test.app-mergeDebugAndroidTestResources-4 C:\Users\Mohammed Foysal\Downloads\makeniqalv5-master\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\merged.dir
+com.v5foradnroid.userapp.test.app-mergeDebugAndroidTestResources-5 C:\Users\Mohammed Foysal\Downloads\makeniqalv5-master\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\stripped.dir
+com.v5foradnroid.userapp.test.app-merged_res-6 C:\Users\Mohammed Foysal\Downloads\makeniqalv5-master\app\build\intermediates\merged_res\debugAndroidTest
