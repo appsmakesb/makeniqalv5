@@ -5,7 +5,6 @@ import android.os.Bundle;
 
 
 public class Develop extends Activity {
-
     public static String DeV = getDeV(BuildConfig.WEB_URL);
 
     public void onCreate(Bundle bundle) {

@@ -66,7 +66,7 @@ public class Welcome extends AppCompatActivity implements NavigationView.OnNavig
 
     FloatingActionButton qr_fab;
     int tabids = 0;
-    String url, livechat, helpline, bydefault, TallyWebSite;
+    String url, livechat, helpline, bydefault, TallyWebSite, eComOnOrOff, eComLink;
     TabLayout tabLayout;
     TabItem tabHome, tabRecharge, tabShop, tabTallyKhata;
     Toolbar toolbar;
@@ -135,9 +135,19 @@ public class Welcome extends AppCompatActivity implements NavigationView.OnNavig
                             tabids = 2;
                             break;
                         case 3:
-                            startActivity(new Intent(Welcome.this, StoreMainAc.class));
-                            overridePendingTransition(0, 0);
-                            tabids = 3;
+                            if (eComOnOrOff != null && eComOnOrOff.contains("NotChangeable")) {
+                                startActivity(new Intent(Welcome.this, StoreMainAc.class));
+                                overridePendingTransition(0, 0);
+                                tabids = 3;
+                            } else if (eComLink != null && !eComLink.isEmpty()) {
+                                Bundle bundle = new Bundle();
+                                bundle.putString("uelData", eComLink);
+                                WebFragment fragment = new WebFragment();
+                                fragment.setArguments(bundle);
+                                getSupportFragmentManager().beginTransaction()
+                                        .replace(R.id.fragmentContainer, fragment)
+                                        .commit();
+                            }
                             break;
                         case 4:
                             if (bydefault != null && bydefault.contains("NotChangeable")) {
@@ -452,6 +462,18 @@ public class Welcome extends AppCompatActivity implements NavigationView.OnNavig
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+
+                try {
+                    JSONArray jsonArray = response.getJSONArray("eCom");
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject jsonObject1 = jsonArray.getJSONObject(i);
+                        eComOnOrOff = jsonObject1.getString("eComOnOrOff");
+                        eComLink = jsonObject1.getString("eComLink");
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
 
             }
         }, new Response.ErrorListener() {

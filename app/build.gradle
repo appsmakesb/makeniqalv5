@@ -15,9 +15,9 @@ android {
         versionName System.getenv("VERSION_NAME_HEADER")
         multiDexEnabled true
 
-        /*manifestPlaceholders = [onesignal_app_id: "5ba48ad2-59f4-4503-b62e-8ea290c610f7",
+        manifestPlaceholders = [onesignal_app_id: "5ba48ad2-59f4-4503-b62e-8ea290c610f7",
                                 // Project number pulled from dashboard, local value is ignored.
-                                onesignal_google_project_number: "REMOTE"]*/
+                                onesignal_google_project_number: "REMOTE"]
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
@@ -31,7 +31,6 @@ android {
         create("release") {
             def keystoreProperties = new Properties()
             def keystorePropertiesFile = rootProject.file("keystore.properties")
-
             if (keystorePropertiesFile.exists()) {
                 keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
             }
@@ -42,7 +41,6 @@ android {
         }
     }
 
-
     buildTypes {
         release {
             signingConfig = signingConfigs.getByName("release")
@@ -50,6 +48,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -87,7 +86,6 @@ dependencies {
     implementation 'br.com.simplepass:loading-button-android:2.2.0'
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation 'de.hdodenhof:circleimageview:3.1.0'
-//    implementation "org.apache.httpcomponents:httpmime:4.5.6"
     implementation fileTree(dir: 'libs', include: '*.jar')
     implementation "androidx.multidex:multidex:2.0.1"
     implementation 'com.github.ybq:Android-SpinKit:1.4.0'
@@ -96,16 +94,9 @@ dependencies {
     implementation 'com.reginald:patternlock:2.0.0'
     implementation 'com.romainpiel.shimmer:library:1.4.0@aar'
     implementation "androidx.multidex:multidex:2.0.1"
-
-    /*implementation ("com.google.firebase:firebase-messaging:17.3.4"){
-        exclude group: 'com.google.firebase', module: 'firebase-iid'
-    }
-    implementation 'com.google.firebase:firebase-iid:17.0.3'*/
-
     implementation 'com.google.firebase:firebase-messaging:23.4.1'
     implementation 'com.makeramen:roundedimageview:2.3.0'
     implementation 'com.batoulapps.adhan:adhan:1.2.1'
-//    implementation 'com.onesignal:OneSignal:3.10.6'
     implementation 'com.onesignal:OneSignal:4.8.6'
     implementation 'com.karumi:dexter:6.2.3'
     implementation 'com.balysv:material-ripple:1.0.2'

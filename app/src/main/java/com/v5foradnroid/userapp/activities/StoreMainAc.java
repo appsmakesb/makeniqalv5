@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.database.SQLException;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -17,6 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -25,6 +27,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
+
 import com.android.volley.Request.Method;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -37,13 +40,22 @@ import com.v5foradnroid.userapp.Config;
 import com.v5foradnroid.userapp.R;
 import com.v5foradnroid.userapp.fragments.FragmentCategory;
 import com.v5foradnroid.userapp.fragments.FragmentHelp;
+import com.v5foradnroid.userapp.fragments.FragmentHome;
 import com.v5foradnroid.userapp.fragments.FragmentProfile;
 import com.v5foradnroid.userapp.fragments.FragmentRecent;
 import com.v5foradnroid.userapp.utilities.AppBarLayoutBehavior;
 import com.v5foradnroid.userapp.utilities.DBHelper;
+
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class StoreMainAc extends AppCompatActivity {
 
@@ -89,6 +101,7 @@ public class StoreMainAc extends AppCompatActivity {
         if (openCategory != null && openCategory.equals("payment")) {
             viewPager.setCurrentItem(2);
         }
+
 
         navigation = findViewById(R.id.navigation_store);
         navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -287,7 +300,7 @@ public class StoreMainAc extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 VolleyLog.d("INFO", "Error: " + error.getMessage());
-                Toast.makeText(getApplicationContext(), "Error is"+error.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Error is" + error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
         MyApplication.getInstance().addToRequestQueue(jsonObjReq);
@@ -301,6 +314,10 @@ public class StoreMainAc extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("FT", Context.MODE_PRIVATE);
         int selectedColor = sharedPreferences.getInt("AppColorCode", getResources().getColor(R.color.primary));
         return selectedColor;
+    }
+
+    public static String getPref23(String str, Context context) {
+        return PreferenceManager.getDefaultSharedPreferences(context).getString(str, "never");
     }
 
 }

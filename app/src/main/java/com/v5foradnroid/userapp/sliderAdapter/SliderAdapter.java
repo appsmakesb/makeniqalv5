@@ -8,11 +8,13 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.bumptech.glide.Glide;
 import com.v5foradnroid.userapp.R;
 import com.v5foradnroid.userapp.activities.ActivitySplash;
 import com.v5foradnroid.userapp.activities.StoreMainAc;
 import com.smarteist.autoimageslider.SliderViewAdapter;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,8 +38,6 @@ public class SliderAdapter extends SliderViewAdapter<SliderAdapter.SliderAdapter
     public void onBindViewHolder(SliderAdapterViewHolder viewHolder, final int position) {
 
         final SliderOne sliderOne = mSliderItems.get(position);
-
-
         Glide.with(viewHolder.itemView).load(sliderOne.getSliderimg()).centerCrop().into(viewHolder.imageViewBackground);
 
         if (sliderOne.getSliderText() != null) {
